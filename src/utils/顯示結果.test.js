@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import  { shallow } from 'enzyme';
-import 顯示結果 from './utils/顯示結果';
+import 顯示結果 from './顯示結果';
 
 it('剛進網頁時不會有顯示結果', () => {
   const fakeProps = {'結果': null};
