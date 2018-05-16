@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import { 請求書寫檢查 } from './utils/請求';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    let 漢字 = null;
+    let 臺羅 = null;
+    請求書寫檢查({漢字, 臺羅})
+    //e.preventDefault();
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <button onClick={this.handleClick}>click</button>
       </div>
     );
   }
