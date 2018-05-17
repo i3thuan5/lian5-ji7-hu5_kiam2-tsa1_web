@@ -1,13 +1,14 @@
+jest.mock('./utils/請求');
+
+
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
 import { 請求書寫檢查 } from './utils/請求';
-jest.mock('./utils/請求');
-
 
 // beforeEach(() => {
 //   // Clear all instances and calls to constructor and all methods:
-//   請求書寫檢查.mockClear();
+//   請求書寫檢查 = mockClear();
 // });
 
 
@@ -16,9 +17,10 @@ it('renders without crashing', () => {
 });
 
 
-it('按下去之後送ajax', () => {
+it('按下去之後呼叫ajax', () => {
   const wrapper = shallow(<App />);
   wrapper.find('button').simulate('click');
+  console.log(請求書寫檢查);
   expect(請求書寫檢查).toBeCalled();
 });
 

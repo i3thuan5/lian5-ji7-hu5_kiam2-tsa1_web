@@ -11,12 +11,11 @@ class App extends Component {
   handleClick() {
     let 漢字 = null;
     let 臺羅 = null;
-    console.log('請求書寫檢查=', 請求書寫檢查);
-    請求書寫檢查(漢字, 臺羅).then(data => {
-      console.log('data=', data);
-      this.setState({...data});
-    })
-    //e.preventDefault();
+    console.log('請求書寫檢查 async await=', 請求書寫檢查);
+    請求書寫檢查(漢字, 臺羅).then(data => this.setState({...data}));
+  }
+  handleAjaxSuccess(data) {
+    this.setState({...data});
   }
   render() {
     return (
