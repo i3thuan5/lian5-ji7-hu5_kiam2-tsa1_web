@@ -9,17 +9,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {結果: null};
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleClick() {
-    let 漢字 = this.refHan.value;
-    let 臺羅 = this.refLo.value;
+  handleSubmit(e) {
+    let 漢字 = 'sui2';//this.refHan.value;
+    let 臺羅 = 'sui2';//this.refLo.value;
     請求書寫檢查(漢字, 臺羅).then(data => this.setState({...data}));
-  }
-
-  handleAjaxSuccess(data) {
-    this.setState({...data});
   }
 
   render() {
@@ -28,7 +24,7 @@ class App extends Component {
       <Layout>
         <MainSection>
           <form className='ui form'
-           onSubmit={this.handleClick}>
+           onSubmit={this.handleSubmit}>
 
             <div className="app block">
               <textarea

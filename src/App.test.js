@@ -18,17 +18,27 @@ it('renders without crashing', () => {
 });
 
 
+//設計上是，輸入的漢字臺羅會存進state，再讀取state送出ajax。
+//ajax回傳的結果會顯示在頁面下方。
+
 it('按下去之後呼叫ajax', () => {
   const wrapper = shallow(<App />);
-  wrapper.find('button').simulate('click');
+  //fake input handleChange
+  wrapper.setState({漢字: '漢字', 臺羅: '臺羅'});
+  //simulate onSubmit event
+  wrapper.find('form').first().simulate('submit');
+  
   expect(請求書寫檢查).toBeCalled();
 });
 
 
 it('ajax回來更新state書寫檢查', async () => {
   const wrapper = shallow(<App/>);
-  await wrapper.find('button').simulate('click');
+  //wait for ajax return
+  await wrapper.find('form').first().simulate('submit');
+  //get new state
   wrapper.update();
+
   expect(wrapper.state()).toEqual({
     結果: [{漢字: '漢字', 臺羅: '臺羅', 檢查: 'pass'}]
   });
