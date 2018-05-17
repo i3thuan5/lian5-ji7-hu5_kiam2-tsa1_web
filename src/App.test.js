@@ -4,6 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
 import { 請求書寫檢查 } from './utils/請求';
+import 顯示結果 from './utils/顯示結果';
 
 
 beforeEach(() => {
@@ -33,4 +34,10 @@ it('ajax回來更新state書寫檢查', async () => {
   });
 });
 
-// it('state傳給顯示結果')
+it('state傳給小孩', () => {
+  const wrapper = shallow(<App/>);
+  wrapper.setState({結果: [{}]});
+  expect(wrapper.find(顯示結果).props()).toEqual(
+    {結果: [{}]}
+  );
+})
