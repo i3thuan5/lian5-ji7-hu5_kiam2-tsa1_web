@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Layout, MainSection } from 'demo-ui';
 import { 請求書寫檢查 } from './utils/請求';
-import 顯示結果 from './utils/顯示結果';
-import logo from './logo.svg';
-import './App.css';
+import KiatKo from './utils/顯示結果';
+import Iapkha from './utils/頁腳';
+// import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -23,10 +24,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Layout>
+        <MainSection>
         <button onClick={this.handleClick}>click</button>
-        <顯示結果 結果={this.state.結果}/>
-      </div>
+        <KiatKo 結果={this.state.結果}/>
+        </MainSection>
+        <Iapkha/>
+      </Layout>
     );
   }
 }
