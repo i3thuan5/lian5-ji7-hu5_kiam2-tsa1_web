@@ -34,6 +34,7 @@ it('ajax回來更新state書寫檢查', async () => {
   });
 });
 
+
 it('state傳給小孩', () => {
   const wrapper = shallow(<App/>);
   wrapper.setState({結果: [{}]});
