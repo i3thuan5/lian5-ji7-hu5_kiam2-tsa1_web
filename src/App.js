@@ -11,7 +11,11 @@ class App extends Component {
   handleClick() {
     let 漢字 = null;
     let 臺羅 = null;
-    請求書寫檢查({漢字, 臺羅})
+    console.log('請求書寫檢查=', 請求書寫檢查);
+    請求書寫檢查(漢字, 臺羅).then(data => {
+      console.log('data=', data);
+      this.setState({...data});
+    })
     //e.preventDefault();
   }
   render() {
