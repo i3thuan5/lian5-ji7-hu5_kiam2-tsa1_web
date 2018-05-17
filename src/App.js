@@ -8,14 +8,24 @@ import Iapkha from './utils/頁腳';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {結果: null};
+    this.state = {結果: null, 漢字: null, 臺羅: null};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  handleChangeHan(e) {
+    this.setState({漢字: e.target.value});
+  }
+
+  handleChangeLo(e) {
+    this.setState({臺羅: e.target.value});
+  }
+
   handleSubmit(e) {
-    let 漢字 = 'sui2';//this.refHan.value;
-    let 臺羅 = 'sui2';//this.refLo.value;
-    請求書寫檢查(漢字, 臺羅).then(data => this.setState({...data}));
+    // e.preventDefault();
+    let { 漢字, 臺羅 } = this.state;
+    if(漢字 && 臺羅){
+      請求書寫檢查(漢字, 臺羅).then(data => this.setState({...data}));
+    }
   }
 
   render() {
@@ -28,14 +38,14 @@ class App extends Component {
 
             <div className="app block">
               <textarea
-              ref={(c) => { this.refHan = c; }}
+              onChange={this.handleChangeHan}
               rows='3' 
               placeholder={
                 '欲檢查書寫的臺羅傳統調、臺羅數字調、'+
                 '白話字傳統調、白話字數字調、漢羅'
               }/>
               <textarea
-              ref={(c) => { this.refLo = c; }}
+              onChange={this.handleChangeLo}
               rows='3' 
               placeholder={
                 '欲檢查書寫的臺羅傳統調、臺羅數字調、'+
