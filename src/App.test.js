@@ -24,29 +24,32 @@ it('renders without crashing', () => {
 it('按下去之後呼叫ajax', () => {
   const wrapper = shallow(<App />);
   //fake input handleChange
-  wrapper.setState({漢字: '漢字', 臺羅: '臺羅'});
+  wrapper.setState({漢字: '漢', 臺羅: 'lo'});
   //simulate onSubmit event
   wrapper.find('form').first().simulate('submit');
   
-  expect(請求書寫檢查).toBeCalled();
+  expect(請求書寫檢查).toBeCalledWith('漢', 'lo');
 });
 
 
 it('ajax回來更新state書寫檢查', async () => {
   const wrapper = shallow(<App/>);
-  //wait for ajax return
+  //fake input handleChange
+  wrapper.setState({漢字: '漢', 臺羅: 'lo'});
+  //wait for ajax returned
   await wrapper.find('form').first().simulate('submit');
   //get new state
   wrapper.update();
 
   expect(wrapper.state()).toEqual({
-    結果: [{漢字: '漢字', 臺羅: '臺羅', 檢查: 'pass'}]
+    結果: [{漢字: '漢', 臺羅: 'lo', 檢查: ''}]
   });
 });
 
 
 it('state傳給小孩', () => {
   const wrapper = shallow(<App/>);
+  //fake ajax returned value
   wrapper.setState({結果: [{}]});
   expect(wrapper.find(顯示結果).props()).toEqual(
     {結果: [{}]}
