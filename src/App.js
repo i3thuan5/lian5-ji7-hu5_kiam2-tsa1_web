@@ -13,8 +13,8 @@ class App extends Component {
   }
 
   handleClick() {
-    let 漢字 = null;
-    let 臺羅 = null;
+    let 漢字 = this.refHan.value;
+    let 臺羅 = this.refLo.value;
     請求書寫檢查(漢字, 臺羅).then(data => this.setState({...data}));
   }
 
@@ -23,11 +23,40 @@ class App extends Component {
   }
 
   render() {
+    let 正在查詢 = false;
     return (
       <Layout>
         <MainSection>
-        <button onClick={this.handleClick}>click</button>
-        <KiatKo 結果={this.state.結果}/>
+          <form className='ui form'
+           onSubmit={this.handleClick}>
+
+            <div className="app block">
+              <textarea
+              ref={(c) => { this.refHan = c; }}
+              rows='3' 
+              placeholder={
+                '欲檢查書寫的臺羅傳統調、臺羅數字調、'+
+                '白話字傳統調、白話字數字調、漢羅'
+              }/>
+              <textarea
+              ref={(c) => { this.refLo = c; }}
+              rows='3' 
+              placeholder={
+                '欲檢查書寫的臺羅傳統調、臺羅數字調、'+
+                '白話字傳統調、白話字數字調、漢羅'
+              }/>
+            </div>
+
+            <div className="app clearing">
+              <button className={
+                `ui huge primary right floated button ${
+                正在查詢 ? "disabled" : ""}`}
+                type='submit'
+              >檢查</button>
+            </div>
+          </form>
+
+          <KiatKo 結果={this.state.結果}/>
         </MainSection>
         <Iapkha/>
       </Layout>
