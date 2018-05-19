@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import { Layout, MainSection } from 'demo-ui';
 import { 請求書寫檢查 } from './utils/請求';
 import KiatKo from './utils/顯示結果';
+import TsaSung from './utils/查詢';
 import Iapkha from './utils/頁腳';
 // import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {結果: null, 漢字: null, 臺羅: null};
+    this.state = {
+      結果: null,
+      漢字: null,
+      臺羅: null,
+      正在查詢: false
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeHan = this.handleChangeHan.bind(this);
+    this.handleChangeLo = this.handleChangeLo.bind(this);
   }
 
   handleChangeHan(e) {
@@ -18,6 +26,14 @@ class App extends Component {
 
   handleChangeLo(e) {
     this.setState({臺羅: e.target.value});
+  }
+
+  setSearching() {
+    this.setState({正在查詢: true});
+  }
+
+  unsetSearching() {
+    this.setState({正在查詢: false});
   }
 
   handleSubmit(e) {
@@ -33,35 +49,12 @@ class App extends Component {
     return (
       <Layout>
         <MainSection>
-          <form className='ui form'
-           onSubmit={this.handleSubmit}>
-
-            <div className="app block">
-              <textarea
-              onChange={this.handleChangeHan}
-              rows='3' 
-              placeholder={
-                '欲檢查書寫的臺羅傳統調、臺羅數字調、'+
-                '白話字傳統調、白話字數字調、漢羅'
-              }/>
-              <textarea
-              onChange={this.handleChangeLo}
-              rows='3' 
-              placeholder={
-                '欲檢查書寫的臺羅傳統調、臺羅數字調、'+
-                '白話字傳統調、白話字數字調、漢羅'
-              }/>
-            </div>
-
-            <div className="app clearing">
-              <button className={
-                `ui huge primary right floated button ${
-                正在查詢 ? "disabled" : ""}`}
-                type='submit'
-              >檢查</button>
-            </div>
-          </form>
-
+          <TsaSung
+            onSubmit={this.handleSubmit}
+            onChangeHan={this.handleChangeHan}
+            onChangeLo={this.handleChangeLo}
+            正在查詢={false}
+          />
           <KiatKo 結果={this.state.結果}/>
         </MainSection>
         <Iapkha/>

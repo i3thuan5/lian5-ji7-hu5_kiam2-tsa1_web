@@ -1,7 +1,7 @@
 jest.mock('./utils/請求');
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from './App';
 import { 請求書寫檢查 } from './utils/請求';
 import 顯示結果 from './utils/顯示結果';
@@ -22,18 +22,18 @@ it('renders without crashing', () => {
 //ajax回傳的結果會顯示在頁面下方。
 
 it('按下去之後呼叫ajax', () => {
-  const wrapper = shallow(<App />);
+  const wrapper = mount(<App />);
   //fake input handleChange
   wrapper.setState({漢字: '漢', 臺羅: 'lo'});
   //simulate onSubmit event
   wrapper.find('form').first().simulate('submit');
-  
+
   expect(請求書寫檢查).toBeCalledWith('漢', 'lo');
 });
 
 
 it('ajax回來更新state書寫檢查', async () => {
-  const wrapper = shallow(<App/>);
+  const wrapper = mount(<App/>);
   //fake input handleChange
   wrapper.setState({漢字: '漢', 臺羅: 'lo'});
   //wait for ajax returned
