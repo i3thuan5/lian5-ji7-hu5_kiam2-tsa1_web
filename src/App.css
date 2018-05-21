@@ -2,6 +2,10 @@
   margin-bottom: 2rem;
 }
 
+.ui.form textarea + textarea {
+  margin-top: 0.5rem;
+}
+
 .ui.text.container {
   line-height: 1rem;
 }
