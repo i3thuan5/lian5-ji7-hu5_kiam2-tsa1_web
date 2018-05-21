@@ -4,15 +4,16 @@ import { 請求書寫檢查 } from './utils/請求';
 import KiatKo from './utils/顯示結果';
 import TsaSung from './utils/查詢';
 import Iapkha from './utils/頁腳';
-// import './App.css';
+import 'semantic-ui-css/components/message.min.css';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       結果: null,
-      漢字: null,
-      臺羅: null,
+      漢字: '媠媠媠',
+      臺羅: 'sui2sui2sui2',
       正在查詢: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +38,7 @@ class App extends Component {
   }
 
   handleSubmit(e) {
-    // e.preventDefault();
+    e.preventDefault();
     let { 漢字, 臺羅 } = this.state;
     if(漢字 && 臺羅){
       請求書寫檢查(漢字, 臺羅).then(data => this.setState({...data}));
@@ -54,6 +55,8 @@ class App extends Component {
             onChangeHan={this.handleChangeHan}
             onChangeLo={this.handleChangeLo}
             正在查詢={false}
+            Han={this.state.漢字}
+            Lo={this.state.臺羅}
           />
           <KiatKo 結果={this.state.結果}/>
         </MainSection>
