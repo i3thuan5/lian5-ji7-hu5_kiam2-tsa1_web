@@ -19,7 +19,6 @@ class 查詢 extends React.Component {
               '白話字傳統調、白話字數字調、漢羅'
             }
             defaultValue={this.props.Han}/>
-          }/>
 
           <textarea
             onChange={this.props.onChangeLo}
@@ -29,7 +28,6 @@ class 查詢 extends React.Component {
               '白話字傳統調、白話字數字調、漢羅'
              }
             defaultValue={this.props.Lo}/>
-           }/>
         </div>
 
         <div className="app clearing">

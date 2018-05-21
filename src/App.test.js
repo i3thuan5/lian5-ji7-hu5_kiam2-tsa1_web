@@ -42,7 +42,7 @@ it('ajax回來更新state書寫檢查', async () => {
   wrapper.update();
 
   expect(wrapper.state().結果).toEqual(
-    [{漢字: '漢', 臺羅: 'lo', 檢查: ''}]
+    [{漢字: '漢', 臺羅: 'lo', 檢查: []}]
   );
 });
 
