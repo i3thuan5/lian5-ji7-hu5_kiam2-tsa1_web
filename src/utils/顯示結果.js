@@ -15,8 +15,7 @@ const 顯示結果 = ({結果}) => {
             item.檢查 ? <錯誤訊息 訊息={item.檢查}/>
             : null
           }
-    </div>
-
+          </div>
         </Block>
       ) : null
     }
