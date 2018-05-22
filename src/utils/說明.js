@@ -1,6 +1,5 @@
 import React from 'react';
 import { Block } from 'demo-ui';
-import TshoNgoo from './錯誤訊息組';
 
 class 說明 extends React.PureComponent {
 
