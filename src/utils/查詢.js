@@ -1,10 +1,7 @@
 import React from 'react';
 
 
-class 查詢 extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+class 查詢 extends React.PureComponent {
   render(){
     return (
       <form className='ui form'

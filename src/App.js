@@ -41,12 +41,16 @@ class App extends Component {
     e.preventDefault();
     let { 漢字, 臺羅 } = this.state;
     if(漢字 && 臺羅){
-      請求書寫檢查(漢字, 臺羅).then(data => this.setState({...data}));
+      this.setSearching();
+      請求書寫檢查(漢字, 臺羅)
+        .then(data => {
+          this.setState({...data});
+          this.unsetSearching();
+      });
     }
   }
 
   render() {
-    let 正在查詢 = false;
     return (
       <Layout>
         <MainSection>
@@ -54,7 +58,7 @@ class App extends Component {
             onSubmit={this.handleSubmit}
             onChangeHan={this.handleChangeHan}
             onChangeLo={this.handleChangeLo}
-            正在查詢={false}
+            正在查詢={this.state.正在查詢}
             Han={this.state.漢字}
             Lo={this.state.臺羅}
           />
