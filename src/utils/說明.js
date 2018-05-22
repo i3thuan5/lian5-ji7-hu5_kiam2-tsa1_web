@@ -6,7 +6,7 @@ class 說明 extends React.PureComponent {
 render(){
   return (
     <div className="ui info message">
-      <div class="header">臺語書寫連字符檢查器說明</div>
+      <div className="header">臺語書寫連字符檢查器說明</div>
       <Block>
         <div className="ui text container">
         <p>參考臺羅連字符規範，提示可能發生錯誤書寫的所在。</p>
