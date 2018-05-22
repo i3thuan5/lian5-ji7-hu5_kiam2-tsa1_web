@@ -4,6 +4,7 @@ import { 請求書寫檢查 } from './utils/請求';
 import KiatKo from './utils/顯示結果';
 import TsaSung from './utils/查詢';
 import Iapkha from './utils/頁腳';
+import SuehBin from './utils/說明';
 import 'semantic-ui-css/components/message.min.css';
 import './App.css';
 
@@ -63,6 +64,7 @@ class App extends Component {
             Lo={this.state.臺羅}
           />
           <KiatKo 結果={this.state.結果}/>
+          <SuehBin/>
         </MainSection>
         <Iapkha/>
       </Layout>
