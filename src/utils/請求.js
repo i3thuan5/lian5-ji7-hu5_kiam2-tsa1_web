@@ -6,30 +6,18 @@ export const 請求一句書寫檢查 = (漢字, 臺羅) => {
   //manually append query paramters
   Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
   //request
-  console.log('依據', 漢字, 臺羅);
-//   return new Promise((resolve, reject) => {
   return fetch(url, {method: 'GET'})
-    .then(response => {
-      return response.json();//this is a promise
-/*       console.log('response', dataPromise);
-          resolve({...dataPromise, 漢字, 臺羅}) */
-    })
-    .then(myjson => {
-      console.log('myjson', myjson, {...myjson, 漢字, 臺羅});
-      return Promise.resolve({...myjson, 漢字, 臺羅});
-    });
-//   });
+    .then(response => response.json())
+    .then(myjson => ({...myjson, 漢字, 臺羅}));
 };
 
 
-export const 請求書寫檢查 = async function(對齊章物件) {
-
-  return new Promise(async (resolve, reject) => {
+export const 請求書寫檢查 = function(對齊章物件) {
+  return new Promise((resolve, reject) => {
     if (對齊章物件.hasOwnProperty('多元書寫')) {
-      let p = await Promise.all(
+      Promise.all(
         對齊章物件.多元書寫.map(item => 請求一句書寫檢查(item.漢字, item.臺羅斷詞))
       ).then(values => {
-        console.log('values=', values);
         resolve({結果: values})
       }).catch(error =>
         reject('請求書寫檢查發生錯誤')

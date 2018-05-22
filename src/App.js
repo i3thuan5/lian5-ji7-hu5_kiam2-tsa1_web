@@ -13,8 +13,8 @@ class App extends Component {
     super(props);
     this.state = {
       結果: null,
-      漢字: '媠媠媠',
-      臺羅: 'sui2sui2sui2',
+      漢字: '食著較安心。',
+      臺羅: 'tsia̍h tio̍h khah an-sim.',
       正在查詢: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
