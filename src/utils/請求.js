@@ -17,3 +17,10 @@ export const 請求書寫檢查 = (漢字, 臺羅) => {
     ]});
   });
 };
+
+export const 請求對齊章物件 = (漢字, 臺羅) => {
+  return fetch('https://服務.意傳.台灣/漢字音標對齊', {
+    method: 'GET',
+    body: JSON.stringify({漢字, 臺羅, 查詢腔口: '閩南語'})
+  });
+}

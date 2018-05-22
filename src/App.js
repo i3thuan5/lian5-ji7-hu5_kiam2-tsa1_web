@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, MainSection } from 'demo-ui';
-import { 請求書寫檢查 } from './utils/請求';
+import { 請求書寫檢查, 請求對齊章物件 } from './utils/請求';
 import KiatKo from './utils/顯示結果';
 import TsaSung from './utils/查詢';
 import Iapkha from './utils/頁腳';
@@ -43,8 +43,9 @@ class App extends Component {
     let { 漢字, 臺羅 } = this.state;
     if(漢字 && 臺羅){
       this.setSearching();
-      請求書寫檢查(漢字, 臺羅)
-        .then(data => {
+      請求對齊章物件(漢字, 臺羅)
+      .then(請求書寫檢查)
+      .then(data => {
           this.setState({...data});
           this.unsetSearching();
       });

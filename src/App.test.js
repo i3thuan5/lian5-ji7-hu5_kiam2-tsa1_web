@@ -3,7 +3,7 @@ jest.mock('./utils/請求');
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import App from './App';
-import { 請求書寫檢查 } from './utils/請求';
+import { 請求書寫檢查, 請求對齊章物件 } from './utils/請求';
 import 顯示結果 from './utils/顯示結果';
 
 
@@ -21,14 +21,15 @@ it('renders without crashing', () => {
 //設計上是，輸入的漢字臺羅會存進state，再讀取state送出ajax。
 //ajax回傳的結果會顯示在頁面下方。
 
-it('按下去之後呼叫ajax', () => {
+it('按下去之後呼叫ajax', async () => {
   const wrapper = mount(<App />);
   //fake input handleChange
   wrapper.setState({漢字: '漢', 臺羅: 'lo'});
   //simulate onSubmit event
-  wrapper.find('form').first().simulate('submit');
+  await wrapper.find('form').first().simulate('submit');
 
-  expect(請求書寫檢查).toBeCalledWith('漢', 'lo');
+  expect(請求對齊章物件).toBeCalledWith('漢', 'lo');
+  expect(請求書寫檢查).toBeCalled();
 });
 
 
@@ -39,7 +40,7 @@ it('ajax回來更新state書寫檢查', async () => {
   //wait for ajax returned
   await wrapper.find('form').first().simulate('submit');
   //get new state
-  wrapper.update();
+  await wrapper.update();
 
   expect(wrapper.state().結果).toEqual(
     [{漢字: '漢', 臺羅: 'lo', 檢查: []}]
