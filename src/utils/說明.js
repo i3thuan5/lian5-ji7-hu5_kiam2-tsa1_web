@@ -10,12 +10,12 @@ render(){
       <Block>
         <div className="ui text container">
         <p>參考臺羅連字符規範，提示可能發生錯誤書寫的所在。</p>
-        <p className='resultline'>食著較安心。</p>
-        <p className='resultline'>tsia̍h tio̍h khah an-sim.</p>
+        <p>食著較安心。</p>
+        <p>tsia̍h tio̍h khah an-sim.</p>
         <div className="ui negative compact message">
         <p>2，前：E動詞（二）</p>
         </div>
-        <p className='resultline'>第2个字的頭前，應該寫做『tsia̍h-tio̍h』。參考自動詞（二）規範。</p>
+        <p>第2个字的頭前，應該寫做『tsia̍h-tio̍h』。參考自動詞（二）規範。</p>
       </div>
       </Block>
     </div>
