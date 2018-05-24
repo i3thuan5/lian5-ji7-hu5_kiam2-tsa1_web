@@ -46,7 +46,7 @@ class App extends Component {
       請求對齊章物件(漢字, 臺羅)
       .then(請求書寫檢查)
       .then(data => {
-          this.setState({...data});
+          this.setState(data);
           this.unsetSearching();
       })
       .catch(error => {
