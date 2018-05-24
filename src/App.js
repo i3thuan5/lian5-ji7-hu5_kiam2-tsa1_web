@@ -48,6 +48,10 @@ class App extends Component {
       .then(data => {
           this.setState({...data});
           this.unsetSearching();
+      })
+      .catch(error => {
+          console.log('App.js error', error);
+          this.unsetSearching();
       });
     }
   }
