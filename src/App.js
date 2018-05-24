@@ -45,7 +45,7 @@ class App extends Component {
   }
 
   showErrorInfo(err) {
-    this.setState({對齊失敗: err});
+    this.setState({結果:null, 對齊失敗: err});
   }
 
   handleSubmit(e) {
@@ -63,7 +63,10 @@ class App extends Component {
           this.unsetSearching();
       })
       .catch(error => {
-          this.showErrorInfo(error);
+        console.log('error', error);
+          if(error.hasOwnProperty('失敗')){
+            this.showErrorInfo(error.失敗);
+          }
           this.unsetSearching();
       });
     }

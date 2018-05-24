@@ -28,7 +28,14 @@ export const 請求對齊章物件 = (漢字, 臺羅) => {
   //manually append query paramters
   Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
   //request
+  console.log('requesting...');
   return fetch(url, {method: 'GET'})
     .then(response => response.json())
-    .catch(error => Promise.reject(`請求對齊章物件發生錯誤, ${error}`));
+    .then(data => {
+      if (data.hasOwnProperty('失敗')){
+        return Promise.reject(data);
+      }
+      return data;
+    });
+    // .catch(error => `請求書寫檢查發生錯誤, ${error}`);
 }

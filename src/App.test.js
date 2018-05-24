@@ -66,7 +66,7 @@ it('state存請求對齊失敗', async () => {
   await wrapper.instance().handleSubmit({preventDefault: jest.fn()});
   wrapper.update();
   
-  expect(wrapper.state().對齊失敗).not.toBeNull();
+  expect(wrapper.state().對齊失敗).toEqual('對齊失敗');
 });
 
 
