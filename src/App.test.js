@@ -23,11 +23,11 @@ it('renders without crashing', () => {
 //ajax回傳的結果會顯示在頁面下方。
 
 it('按下去之後呼叫ajax', async () => {
-  const wrapper = mount(<App />);
+  const wrapper = shallow(<App />);
   //fake input handleChange
   wrapper.setState({漢字: '漢a', 臺羅: 'lo'});
   //simulate onSubmit event
-  await wrapper.find('form').first().simulate('submit');
+  await wrapper.instance().handleSubmit({preventDefault: jest.fn()});
 
   expect(請求對齊章物件).toBeCalledWith('漢a', 'lo');
   expect(請求書寫檢查).toBeCalled();
@@ -35,13 +35,12 @@ it('按下去之後呼叫ajax', async () => {
 
 
 it('ajax回來更新state書寫檢查', async () => {
-  const wrapper = mount(<App/>);
+  const wrapper = shallow(<App/>);
   //fake input handleChange
   wrapper.setState({漢字: '漢b', 臺羅: 'lo'});
-  //wait for ajax returned
-  await wrapper.find('form').first().simulate('submit');
-  //get new state
-  await wrapper.update();
+  await wrapper.instance().handleSubmit({preventDefault: jest.fn()});
+  //force re-render
+  wrapper.update();
 
   expect(wrapper.state().結果).toEqual(
     [{漢字: '漢b', 臺羅: 'lo', 檢查: []}]
@@ -62,18 +61,21 @@ it('書寫檢查傳給小孩', () => {
 
 it('state存請求對齊失敗', async () => {
   const wrapper = shallow(<App/>);
+  
   wrapper.setState({漢字: 'ccc', 臺羅: 'lo'});
   await wrapper.instance().handleSubmit({preventDefault: jest.fn()});
-  //update to re-render
   wrapper.update();
+  
   expect(wrapper.state().對齊失敗).not.toBeNull();
 });
 
+
 it('顯示請求對齊失敗', async () => {
   const wrapper = shallow(<App/>);
+  
   wrapper.setState({漢字: 'ccc', 臺羅: 'lo'});
   await wrapper.instance().handleSubmit({preventDefault: jest.fn()});
-  //update to re-render
   wrapper.update();
+  
   expect(wrapper.find(TshingKiuSitPai).length).toEqual(1);
 });

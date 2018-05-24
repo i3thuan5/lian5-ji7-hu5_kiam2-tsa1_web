@@ -55,7 +55,7 @@ class App extends Component {
 
       this.setSearching();
       this.clearErrorInfo();
-console.log('sui2');
+
       return 請求對齊章物件(漢字, 臺羅)
       .then(請求書寫檢查)
       .then(data => {
@@ -63,7 +63,6 @@ console.log('sui2');
           this.unsetSearching();
       })
       .catch(error => {
-        console.log('catch error', error)
           this.showErrorInfo(error);
           this.unsetSearching();
       });
