@@ -3,8 +3,7 @@ export const 請求對齊章物件 = jest.fn((漢字, 臺羅) => {
   return new Promise((resolve, reject) => {
     if(漢字 === 'ccc') {
       //mock reject
-      console.log('請求對齊章物件mock reject')
-      reject({"失敗": "對齊失敗"});
+      reject("對齊失敗");
     }
     else {
       //mock resolve

@@ -22,20 +22,20 @@ export const 請求書寫檢查 = (對齊章物件) => {
     .catch(error => `請求書寫檢查發生錯誤, ${error}`);
 };
 
+
 export const 請求對齊章物件 = (漢字, 臺羅) => {
   let url = new URL('https://服務.意傳.台灣/漢字音標對齊');
   let params = {漢字, 音標: 臺羅, 查詢腔口: '閩南語'};
   //manually append query paramters
-  Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+  Object.keys(params).forEach(key => 
+    url.searchParams.append(key, params[key]));
   //request
-  console.log('requesting...');
   return fetch(url, {method: 'GET'})
     .then(response => response.json())
     .then(data => {
       if (data.hasOwnProperty('失敗')){
-        return Promise.reject(data);
+        return Promise.reject(data.失敗);
       }
       return data;
     });
-    // .catch(error => `請求書寫檢查發生錯誤, ${error}`);
 }

@@ -63,10 +63,7 @@ class App extends Component {
           this.unsetSearching();
       })
       .catch(error => {
-        console.log('error', error);
-          if(error.hasOwnProperty('失敗')){
-            this.showErrorInfo(error.失敗);
-          }
+          this.showErrorInfo(error);
           this.unsetSearching();
       });
     }
