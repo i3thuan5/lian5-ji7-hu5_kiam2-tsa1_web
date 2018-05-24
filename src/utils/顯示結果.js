@@ -1,6 +1,6 @@
 import React from 'react';
 import { Block } from 'demo-ui';
-import TshoNgoo from './錯誤訊息組';
+import KiamTsa from './檢查訊息';
 import TshingKiuSitPai from './請求失敗訊息';
 
 class 顯示結果 extends React.PureComponent {
@@ -21,7 +21,7 @@ render(){
             : null
           }
           {
-            item.檢查 ? <TshoNgoo 訊息陣列={item.檢查}/>
+            item.檢查 ? <KiamTsa 二維訊息={item.檢查}/>
             : null
           }
           </div>

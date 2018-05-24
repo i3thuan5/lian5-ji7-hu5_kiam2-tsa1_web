@@ -7,9 +7,8 @@ export const 請求一句書寫檢查 = (漢字, 臺羅) => {
   Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
   //request
   return fetch(url, {method: 'GET'})
-    .then(data => Promise.reject('系統發生錯誤，無法度檢查這句。'))
-    // .then(response => response.json())
-    // .then(myjson => ({...myjson, 漢字, 臺羅}))
+    .then(response => response.json())
+    .then(data => ({...data, 漢字, 臺羅}))
     //resolve error to not interrupt other 請求一句書寫檢查 request
     .catch(error => ({請求失敗: error, 漢字, 臺羅}));
 };
