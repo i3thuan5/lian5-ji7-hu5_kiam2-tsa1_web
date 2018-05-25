@@ -2,6 +2,16 @@ language: node_js
 node_js:
 - node
 - '8'
-script: 
+script:
 - npm run test
 - npm run build
+before_deploy: npm run build
+deploy:
+  provider: pages
+  fqdn: xn--p8s050ac6bg7zsxy.xn--v0qr21b.xn--kpry57d
+  skip_cleanup: true
+  local_dir: build/
+  github_token:
+    secure: jtzTGvUbhHm8Y1kNq4GK895ikGAIxuuVmcQwPaYsM/QTJposDTRszDsvb0/TW3Qllzq+IlX/yk7JYpLLbmjhzm7YJDg6hW6X4WkkgucWtLm2f2y/LuMsW6KxcppL0EDmId8+1lNsrLYnq4c8JwNR/0n04j3WjHDsMF3NTdSGUY6XgHI5ZIT++T0hCt3JEai6UarWpntz4fBbqEPc1DuJHm8WYaNKCiDFLTRcZJBti+J1Lle2ElrXExzT7e4PcU8LJogWJFfp2taJzjbaeaPg2R0tthT/plWZ5ip5G3T/2rNcujieyshsdQhSOGuhwBpry2lf3mt8gRFb5XpMmxNTaWknqEt8Z8IvVGNBhcjaccOm3gUcpJPA3IRX9aHxB4YxYCg81VfuFDAiqVxKRma0Fxp4+MV6YQxtbK7TsU1uzPCnGPZs2PQy98Obs4rXTAaHCRZPEuZgRSsRTDeYiok6CgdU3+50EmcRQ7P4qfswP0yFfNU6m+rbgS7iMr3Ojqr0MgZjBv2ab8PPzXr5Noidexe4bnhttCU/Ojm07bSFW8wa7gZTCNye2r101UxjW+Nktsa+U22MRNI7pmM1YeQiEGAV7jmfzsIdCkvadG5/JSp/fQR3LU1w7JLFjjfG67dnEde8THKl78olm8TaAd5z9t1Vcw3C/J7phAh7dSzs42Y=
+  on:
+    branch: master
