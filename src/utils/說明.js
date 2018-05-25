@@ -10,7 +10,8 @@ render(){
   <Block>
     <div className="ui basic segment">
       <p>根據<a href="http://ws.moe.edu.tw/001/Upload/FileUpload/3677-15601/Documents/lanclassify.pdf"
-      target="_blank">臺羅連字符使用分類說明</a>
+      target="_blank"
+      without rel="noopener noreferrer">臺羅連字符使用分類說明</a>
       ，提示可能發生錯誤書寫的所在。</p>
       <p>食著較安心。<br/>
         Tsia̍h tio̍h khah an-sim.<br/>
