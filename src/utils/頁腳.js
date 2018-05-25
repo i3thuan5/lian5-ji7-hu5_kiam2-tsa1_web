@@ -4,7 +4,7 @@ import { Footer } from 'demo-ui';
 const sites = [
   {
     title: "Github",
-    url: "https://github.com/i3thuan5/lo5ma2ji7_tsuan2huan7",
+    url: "https://github.com/i3thuan5/lian5-ji7-hu5_kiam2-tsa1_web",
   },
   {
     title: "臺語羅馬字轉換器",
