@@ -11,19 +11,13 @@ class 查詢 extends React.PureComponent {
           <textarea
             onChange={this.props.onChangeHan}
             rows='3'
-            placeholder={
-              '欲檢查書寫的臺羅傳統調、臺羅數字調、'+
-              '白話字傳統調、白話字數字調、漢羅'
-            }
+            placeholder='對應的教育部漢字'
             defaultValue={this.props.Han}/>
 
           <textarea
             onChange={this.props.onChangeLo}
             rows='3'
-            placeholder={
-              '欲檢查書寫的臺羅傳統調、臺羅數字調、'+
-              '白話字傳統調、白話字數字調、漢羅'
-             }
+            placeholder='欲檢查書寫的臺羅傳統調、臺羅數字調'
             defaultValue={this.props.Lo}/>
         </div>
 

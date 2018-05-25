@@ -14,8 +14,8 @@ class App extends Component {
     super(props);
     this.state = {
       結果: null,
-      漢字: '食著較安心。',
-      臺羅: 'tsia̍h tio̍h khah an-sim.',
+      漢字: null,
+      臺羅: null,
       正在查詢: false,
       對齊失敗: null
     };
