@@ -11,11 +11,15 @@ const sites = [
     url: "https://xn--m7rr8i4sil03a3tchtsc3hztv.xn--v0qr21b.xn--kpry57d/",
   },
   {
+    title: "臺語自動斷詞器",
+    url: "https://xn--hhr625bzsunxh.xn--v0qr21b.xn--kpry57d/",
+  },
+  {
     title: "詞彙分級網站",
     url: "https://xn--kbrr83a6ixbzl.xn--v0qr21b.xn--kpry57d/",
   },
   {
-    title: "台中教育大學台語系",
+    title: "台中教育大學台語系 MIT授權",
     url: "http://taiwanese.ntcu.edu.tw/",
   },];
 
